@@ -23,4 +23,4 @@ Picked out this one for the similar reasons why I picked to do it without React 
 - React
  
 ## Live preview
-[Click for live preview](https://advice-generator-pied.vercel.app/)
+[Click for live preview](https://advice-generator-react-theta.vercel.app/)
