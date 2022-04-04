@@ -1,30 +1,27 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import { motion } from "framer-motion";
+import axios from "axios";
 import dice from '../icon-dice.svg';
 
 
 const FetchAdv = () => {
-    const [advice, setAdvice] = useState([]);
-
-        const callApi = async () => {
-            const response = await fetch(
-                "https://api.adviceslip.com/advice"
-            );
-            const data = await response.json();
-            setAdvice(data);
-        };
-
+    const [adv, setAdv] = useState([]);
+    const getAdv = async () => {
+        const response = await axios("	https://api.adviceslip.com/advice");
+        console.log(response);
+        setAdv(response.data.slip);
+    };
     useEffect(() => {
-      callApi();
+        getAdv();
     }, []);
-    
+        
     return (
         <div className="fetchPart">
-            <h3 className="adviceId">ADVICE #{advice.slip.id}</h3>
-            <p className="adviceParagraph">"{advice.slip.advice}"</p>
+            <h3 className="adviceId">ADVICE #{adv.id}</h3>
+            <p className="adviceParagraph">"{adv.advice}"</p>
             <motion.div className="button" 
-            onClick={callApi}
+            onClick={getAdv}
             whileHover={{scale: 1.3,
             rotate: 180}}
             >
